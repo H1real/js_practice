@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="canvas" width="200" height="200"></canvas>
+
+<script>
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  function drawBee(x, y) {
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.arc(x, y, 20, 0, Math.PI * 2);
+    ctx.fillStyle = "gold";
+    ctx.fill();
+    ctx.strokeStyle = "black";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(x - 12, y - 30, 10, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(x + 12, y - 30, 10, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(x - 6, y + 2, 4, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(x + 6, y + 2, 4, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+
+  drawBee(100, 100);
+</script>
+</body>
+</html>

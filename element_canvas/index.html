@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Simple Car</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="200"></canvas>
+
+    <script>
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#ffae00";
+      ctx.fillRect(50, 100, 200, 50);
+      ctx.fillRect(90, 70, 120, 40);
+
+      ctx.fillStyle = "black";
+      ctx.beginPath();
+      ctx.arc(80, 160, 15, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(220, 160, 15, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(95, 100, 40, 50);
+      ctx.strokeRect(165, 100, 40, 50);
+
+      ctx.fillStyle = "#007fb5";
+      ctx.fillRect(100, 75, 30, 25);
+      ctx.fillRect(170, 75, 30, 25);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+const width = canvas.width;
+const height = canvas.height;
+
+const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Purple"];
+const ballRadius = 3;
+
+function randomSpeed() {
+  let speed = 0;
+  while (speed === 0) {
+    speed = Math.floor(Math.random() * 11) - 5; // -5 to 5 excluding 0
+  }
+  return speed;
+}
+
+function randomPosition(limit) {
+  return Math.floor(Math.random() * (limit - 2 * ballRadius)) + ballRadius;
+}
+
+class Ball {
+  constructor(color) {
+    this.radius = ballRadius;
+    this.x = randomPosition(width);
+    this.y = randomPosition(height);
+    this.color = color;
+    this.xSpeed = randomSpeed();
+    this.ySpeed = randomSpeed();
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+
+  move() {
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
+  }
+
+  checkCollision() {
+    if (this.x - this.radius < 0) {
+      this.x = this.radius;
+      this.xSpeed = -this.xSpeed;
+    } else if (this.x + this.radius > width) {
+      this.x = width - this.radius;
+      this.xSpeed = -this.xSpeed;
+    }
+
+    if (this.y - this.radius < 0) {
+      this.y = this.radius;
+      this.ySpeed = -this.ySpeed;
+    } else if (this.y + this.radius > height) {
+      this.y = height - this.radius;
+      this.ySpeed = -this.ySpeed;
+    }
+  }
+}
+
+const balls = [];
+for (let i = 0; i < 10; i++) {
+  balls.push(new Ball(colors[i % colors.length]));
+}
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+
+  for (const ball of balls) {
+    ball.move();
+    ball.checkCollision();
+    ball.draw();
+  }
+
+  ctx.strokeRect(0, 0, width, height);
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>

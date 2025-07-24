@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>Front View Car</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="200"></canvas>
+
+    <script>
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#ffae00";
+      ctx.fillRect(75, 100, 150, 60);
+
+      ctx.beginPath();
+      ctx.moveTo(75, 100);
+      ctx.quadraticCurveTo(150, 60, 225, 100);
+      ctx.fill();
+
+      ctx.fillStyle = "#007fb5";
+      ctx.beginPath();
+      ctx.moveTo(90, 100);
+      ctx.lineTo(115, 80);
+      ctx.lineTo(185, 80);
+      ctx.lineTo(210, 100);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = "yellow";
+      ctx.beginPath();
+      ctx.arc(85, 120, 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(215, 120, 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(130, 100);
+      ctx.lineTo(130, 160);
+      ctx.moveTo(170, 100);
+      ctx.lineTo(170, 160);
+      ctx.stroke();
+
+      ctx.fillStyle = "gray";
+      ctx.fillRect(75, 160, 150, 10);
+    </script>
+  </body>
+</html>
